@@ -331,6 +331,15 @@ ans.11
 * RISC V belongs to the little endian memory addressing system, which means that the least significant byte of a word is stored in the smallest memory address.
 
 An Application Binary Interface is a set of rules enforced by the operating system on a specific architecture. So, Linker converts relocatable machine code to absolute machine code via ABI interface specific to the architecture of machine.
+Just like how application program interface (API) is used by application programs to access the standard libraries, an application binary interface or system  call interface is utilised to access hardware resources . The ISA is inherently divided into two parts: *User & System ISA* and *User ISA*  the latter is available to the user directly by system calls. 
+  
+Now, how does the ABI access the hardware resources? 
+- It uses different registers(32 in number) which are each of width `XLEN = 32 bit` for RV32 (~`XLEN = 64 for RV64`) . On a higher level of abstraction these registers are accessed by their respective ABI names.
+  
+  For base integer instructions there are broadly 3 types of of such registers:
+  - I-type : For instructions having immediate values as operands.
+  - R-type : For instructions having only registers as operands.
+  - S-type : For instructions used for storing operations.
 
 So, it is system call interface used by the application program to access the registers specific to architecture. Overhere the architecture is RISC-V, so to access 32 registers of RISC-V below is the table which shows the calling convention (ABI name) given to registers for the application programmer to use.
 

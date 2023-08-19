@@ -3,6 +3,8 @@
 This github repository summarizes the progress made in the ASIC class about Riscv. Quick links:
 
 - [Day 1-Introduction to RISC-V ISA And GNU compiler toolchain ](#Day1--Introduction-to-RISC-V-ISA-And-GNU-compiler-toolchain)
+  
+- [Day 2-Introduction to Application Binary Interface And Basic Error Flow](Day2--Introduction-to-Application-Binary-Interface-And-Basic-error-flow)
 
 - [Word of Thanks](#Word-of-Thanks)
 
@@ -280,6 +282,28 @@ Table :
 
 </details>
 
+
+## Day 2-Introduction to Application Binary Interface And Basic Error Flow
+
+<details>
+<summary>
+	Introduction to Application Binary Interface
+</summary>
+	
+* The application program can directly access the registers of the RISC V architecture using something known as system calls. The ABI (also known as system call interface enables the application to access the hardware resources via registers.
+  
+* In RISC V architecture, the width of the register is defined as XLEN. For RV64 and RV32, the widths are 64 bits and 32 bits, respectively.
+  
+* RISC V belongs to the little endian memory addressing system, which means that the least significant byte of a word is stored in the smallest memory address.
+
+An Application Binary Interface is a set of rules enforced by the operating system on a specific architecture. So, Linker converts relocatable machine code to absolute machine code via ABI interface specific to the architecture of machine.
+
+So, it is system call interface used by the application program to access the registers specific to architecture. Overhere the architecture is RISC-V, so to access 32 registers of RISC-V below is the table which shows the calling convention (ABI name) given to registers for the application programmer to use.
+
+
+![calling_convention](https://github.com/kuby1412/RISC-V-MYTH-Workshop/blob/master/Documentation/ABI.png)
+ 
+</details>
 
 
 ## Word of Thanks

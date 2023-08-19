@@ -432,6 +432,7 @@ I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to com
 - Pruthvi Parate,Colleague,IIIT B
 - Bhargav D V ,Colleague,IIIT B
 - Emil Jayanth Lal,Colleague,IIIT B
+- Sai Sampath,Colleague,IIIT B
 - Nanditha Rao, Professor, IIITB 
 - Madhav Rao, Professor, IIITB
 - Manikandan,Professor,IIITB

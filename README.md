@@ -364,8 +364,28 @@ Here in each Instructions set we can see register are of 5 bits so total number 
 
 ![calling_convention](https://github.com/kuby1412/RISC-V-MYTH-Workshop/blob/master/Documentation/ABI.png)
 
+## labworks
 
- 
+1.MODIFY 1TO9_CUSTOM.C AND LOAD.S AS SHOWN IN VIDEO. WHAT IS THE OUTPUT OF SIMULATION WITH -OFAST ?
+
+![Screenshot 2023-08-19 at 3 42 33 PM](https://github.com/alwinshaju08/RISCV/assets/69166205/cb6dd5a6-f0bb-4c53-b6ec-ecda65c6e1e7)
+
+2.WHAT IS THE MEMORY LOCATION OF LOAD SUBROUTINE?
+
+![Screenshot 2023-08-19 at 3 33 59 PM](https://github.com/alwinshaju08/RISCV/assets/69166205/8fa6ac44-a7e0-47ab-bba8-c4f47cdb0b6f)
+
+3.WHAT IS THE MEMORY LOCATION OF LOOP SUBROUTINE?
+
+ <img width="682" alt="Screenshot 2023-08-19 at 3 37 39 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/aeb90c06-d65e-4214-80d4-568d12f52eb3">
+
+4.OPEN SPIKE DEBUGGER AND RUN 1TO9_CUSTOM.O UNTIL PC IS 101AC WHAT IS THE VALUE OF A0 AND A1 REGISTERS?
+
+<img width="682" alt="Screenshot 2023-08-19 at 3 50 20 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/7d2f5b78-0e7e-45ae-a72b-b2117004e0bc">
+
+5.OPEN SPIKE DEBUGGER AND RUN 1TO9_CUSTOM.O UNTIL PC IS 101B2 WHAT IS THE VALUE OF A0 AND A1 REGISTERS?
+
+<img width="638" alt="Screenshot 2023-08-19 at 3 54 07 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/409a3ab5-0485-4336-826a-4e4c29bb05a7">
+
 </details>
 
 

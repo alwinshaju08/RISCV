@@ -302,6 +302,14 @@ So, it is system call interface used by the application program to access the re
 
 
 ![calling_convention](https://github.com/kuby1412/RISC-V-MYTH-Workshop/blob/master/Documentation/ABI.png)
+
+
+# RISC-V Block Diagram
+
+![RISC-V](https://github.com/kuby1412/RISC-V-MYTH-Workshop/blob/master/Documentation/Block%20Diagram.PNG)
+
+![RISC-V](https://github.com/kuby1412/RISC-V-MYTH-Workshop/blob/master/Documentation/Block%20Diagram%20v2.PNG)
+
  
 </details>
 

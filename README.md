@@ -8,6 +8,8 @@ This github repository summarizes the progress made in the ASIC class about Risc
 
 - [Day 3 Introduction to TL Verilog and Makerchip](#Day-3-Introduction-to-TL-Verilog-and-Makerchip.)
 
+- []()
+
 - [Word of Thanks](#Word-of-Thanks)
 
 - [Reference](#reference)
@@ -450,11 +452,11 @@ Makerchip IDE
 
 Makerchip is a free online environment for developing high-quality integrated circuits. You can code, compile, simulate, and debug Verilog designs, all from your browser. Your code, block diagrams, and waveforms are tightly integrated.
 
-## Loading pythagorean example on makerchip
+## Loading pythagorean Example on Makerchip IDE
 
 <img width="1274" alt="Screenshot 2023-08-19 at 10 11 28 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/91877916-5394-48e6-a156-659fbe506cc6">
 
-## AND Gate - Makerchip IDE
+## AND Gate Example on Makerchip IDE
 
 <img width="1274" alt="Screenshot 2023-08-19 at 10 33 45 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/2adf559c-45f2-41f4-9f19-2602b09266a4">
 

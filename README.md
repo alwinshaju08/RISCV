@@ -16,9 +16,11 @@ This github repository summarizes the progress made in the ASIC class about Risc
 
 <details> 
 <summary> Installation </summary>
+	
 Steps to install Risc-tools (linux)
 
 ```
+sudo apt install libboost-all-dev
 git clone https://github.com/kunalg123/riscv_workshop_collaterals.git
 cd riscv_workshop_collaterals
 chmod +x run.sh
@@ -174,6 +176,7 @@ After running the above code line a number of things can be done as demonstrated
 	  <summary>
 	  Number system in RiscV
   </summary>
+	  
 The RISC-V architecture defines several different data types and number systems to represent and manipulate data. Here, I'll explain the basic number systems used in RISC-V:
 
 - Binary Number System: RISC-V, like most digital systems, primarily operates on binary data. In the binary number system, numbers are represented using only two symbols: 0 and 1. Each digit in a binary number represents a power of 2. For example, the binary number "1101" represents (1 * 2^3) + (1 * 2^2) + (0 * 2^1) + (1 * 2^0) = 13 in decimal.
@@ -471,6 +474,7 @@ I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to com
 - Sumanto Kar,Sr. Project Technical Assistant , IIT Bombay
 - Pruthvi Parate,Colleague,IIIT B
 - Emil Jayanth Lal,Colleague,IIIT B
+- Bhargav Dv,Colleague,IIIT B
 - Sai Sampath,Colleague,IIIT B
   
 ## Reference 

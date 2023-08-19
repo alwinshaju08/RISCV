@@ -393,6 +393,32 @@ Code for labwork:
 
 </details>
 
+<details>
+	<summary>Lab to run c program on RISC-V CPU</summary>
+
+ <img width="1440" alt="Screenshot 2023-08-19 at 5 49 22 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/ff0d999e-3631-455c-9e23-7dca14779118">
+
+Here we have riscv cpu program code through which we send the HEX format file of c program to show output the output of the given code 
+
+```
+chmod 777 rv32im.sh
+./rv32im.sh 
+
+```
+<img width="682" alt="Screenshot 2023-08-19 at 5 52 57 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/3db2b137-a683-40db-bfb8-e9ef5f5480fd">
+
+Input hex file to sent through verilog code:
+
+firmware.hex:
+
+<img width="682" alt="Screenshot 2023-08-19 at 5 53 44 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/bbe00737-8a05-4ab7-9f7f-52ac30308975">
+
+firmware32.hex:
+
+<img width="682" alt="Screenshot 2023-08-19 at 5 53 54 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/4743a68b-6822-485f-a33d-c0a13e2d2e11">
+
+</details>
+
 
 ## Word of Thanks
 I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to complete this flow smoothly.

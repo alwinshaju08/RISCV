@@ -460,11 +460,25 @@ Makerchip is a free online environment for developing high-quality integrated ci
 
 <img width="1274" alt="Screenshot 2023-08-19 at 10 33 45 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/2adf559c-45f2-41f4-9f19-2602b09266a4">
 
+## Lab On Understanding Usage Of Vector
 
+<img width="1290" alt="Screenshot 2023-08-20 at 2 31 28 AM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/83c2d94c-ac46-40e0-9c78-fbe64a7669f6">
 
+## Multiplexer on Makerchip IDE
+
+<img width="1290" alt="Screenshot 2023-08-20 at 2 30 47 AM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/5094aaab-ad29-45fe-992d-4215f90eea83">
+
+## Calculator on Makerchip IDE
+
+<img width="1401" alt="Screenshot 2023-08-20 at 3 09 19 AM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/ece71b8a-04b6-404a-ac81-384eba0d87a3">
 
 </details>
+<details >
+<summary >Lab for Combinational logic </summary>
 
+
+ 
+</details>
 
 ## Word of Thanks
 I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to complete this flow smoothly.

@@ -366,6 +366,11 @@ Here in each Instructions set we can see register are of 5 bits so total number 
 
 ## labworks
 
+Code for labwork:
+
+<img width="1440" alt="Screenshot 2023-08-19 at 3 59 15 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/8440a5c2-7781-4288-8a73-07f7872c76db">
+
+
 1.MODIFY 1TO9_CUSTOM.C AND LOAD.S AS SHOWN IN VIDEO. WHAT IS THE OUTPUT OF SIMULATION WITH -OFAST ?
 
 ![Screenshot 2023-08-19 at 3 42 33 PM](https://github.com/alwinshaju08/RISCV/assets/69166205/cb6dd5a6-f0bb-4c53-b6ec-ecda65c6e1e7)

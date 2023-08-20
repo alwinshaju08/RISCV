@@ -534,9 +534,6 @@ In the above implenation, we can observe the errors in the pipeline:
 
 <img width="1332" alt="Screenshot 2023-08-20 at 2 09 18 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/0b4f0017-c51d-4c5f-84d2-e625987694ae">
 
-Output:
-
-
 
 ## Lab On 2 Cycle Calculator
 

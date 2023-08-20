@@ -534,6 +534,13 @@ In the above implenation, we can observe the errors in the pipeline:
 
 <img width="1332" alt="Screenshot 2023-08-20 at 2 09 18 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/0b4f0017-c51d-4c5f-84d2-e625987694ae">
 
+## Lab On Counter and Calculator in Pipeline
+
+<img width="745" alt="Screenshot 2023-08-20 at 3 10 10 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/8ad0d3de-d540-47fc-ad70-9f200127d8aa">
+
+Output:
+
+<img width="1270" alt="Screenshot 2023-08-20 at 3 11 50 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/422d4563-1faa-4f36-ac92-8b9812d9d70a">
 
 ## Lab On 2 Cycle Calculator
 

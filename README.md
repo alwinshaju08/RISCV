@@ -944,9 +944,28 @@ Following the decoding of the above, the instruction immediate decode for all th
 
 ![instr_format](https://user-images.githubusercontent.com/63381455/123752003-009fb680-d8d6-11eb-8b8e-874c4b1a4872.png)
 
-Instruction Type Decode Block diagram:
+Instruction Type  Decode Block diagram:
 
 ![Screenshot 2023-08-20 at 6 48 21 PM](https://github.com/alwinshaju08/RISCV/assets/69166205/d24d89b4-258b-46d8-90b5-bc997e29f24f)
+
+```
+@1
+         $is_u_instr = $instr[6:2] ==? 5'b0x101;
+         
+         $is_s_instr = $instr[6:2] ==? 5'b0100x;
+         
+         $is_r_instr = $instr[6:2] ==? 5'b01011 ||
+                       $instr[6:2] ==? 5'b011x0 ||
+                       $instr[6:2] ==? 5'b10100;
+         
+         $is_j_instr = $instr[6:2] ==? 5'b11011;
+         
+         $is_i_instr = $instr[6:2] ==? 5'b0000x ||
+                       $instr[6:2] ==? 5'b001x0 ||
+                       $instr[6:2] ==? 5'b11001;
+         
+         $is_b_instr = $instr[6:2] ==? 5'b11000;
+```
 
 Output:
 
@@ -987,11 +1006,56 @@ Output:
 
 <img width="1240" alt="Screenshot 2023-08-20 at 7 36 22 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/67468d1e-a086-4e6c-b230-31f3c3cab0c5">
 
-## LAB ON INSTRUCTION FIELD DECODE
+## Lab To Decode Instruction Field Based 
 
+![Screenshot 2023-08-20 at 7 40 20 PM](https://github.com/alwinshaju08/RISCV/assets/69166205/9ef22dc5-7ba0-4812-b83e-5b3e8cea031c)
 
+```
+	$rs2_valid = $is_r_instr || $is_s_instr || $is_b_instr;
+         ?$rs2_valid
+            $rs2[4:0] = $instr[24:20];
+            
+         $rs1_valid = $is_r_instr || $is_i_instr || $is_s_instr || $is_b_instr;
+         ?$rs1_valid
+            $rs1[4:0] = $instr[19:15];
+         
+         $funct3_valid = $is_r_instr || $is_i_instr || $is_s_instr || $is_b_instr;
+         ?$funct3_valid
+            $funct3[2:0] = $instr[14:12];
+            
+         $funct7_valid = $is_r_instr ;
+         ?$funct7_valid
+            $funct7[6:0] = $instr[31:25];
+            
+         $rd_valid = $is_r_instr || $is_i_instr || $is_u_instr || $is_j_instr;
+         ?$rd_valid
+            $rd[4:0] = $instr[11:7];
+```
+
+Output:
+
+<img width="1273" alt="Screenshot 2023-08-20 at 7 42 37 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/63c839d8-12c6-4f01-99b7-fcd9ee91af4c">
+
+## LAB ON Individual Instruction Decode
+
+<img width="819" alt="Screenshot 2023-08-20 at 7 52 58 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/f58b523d-46b6-40a6-87b8-3d3cf09083c7">
+
+Output:
+
+<img width="1276" alt="Screenshot 2023-08-20 at 7 54 33 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/b5383305-2e93-48d4-9252-36e4b2b07bed">
  
 </details>
+<details>
+	<summary> Risc-V Control Logic</summary>
+	
+## Execute and Register file read/write
+
+The next task is to 'read from' and 'write into' the registers. In this operation, 2 read and write operation can be carried out simulatenously. The two `src1_value`/`src2_value` takes input from the two read register `rf_read_data1`/ `rf_read_data2` and pass it on to the ALU unit. At present, `ADDI` and `ADD` is execute whose result is obtained in register `rf_write_data`. The figure below shows the input and output registers.
+
+
+
+</details>
+
 
 ## Word of Thanks
 I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to complete this flow smoothly.

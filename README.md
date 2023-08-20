@@ -523,9 +523,46 @@ Output:
 </details>
 <details> <summary > Pipelining </summary>
 	
-Pipelining or timing abstract is an important feature in TL verilog as it can be implemented very easily with fewer codes as compared to system verilog which reduces bugs to a great extent. An example of the pipeling for pythogoras theorem using both TL verilog and system verilog in this repo . In TL verilog pipteling can be implemented by defining the pipeline as |calc and the different pipeline stages should be properly align and are indicated by @1, @2 and so on.
+Pipelining or timing abstract is an important feature in TL verilog as it can be implemented very easily with fewer codes as compared to system verilog which reduces bugs to a great extent. An example of the pipeling for pythogoras theorem using both TL verilog and system verilog in this repo . In TL verilog pipeling can be implemented by defining the pipeline as |calc and the different pipeline stages should be properly align and are indicated by @1, @2 and so on.
+
+## 
+
+
+
+
+## Lab On 2 Cycle Calculator
 
 Below the snapshot of the pipeline sequential calcuator is included. Here the first pipeline stage consists of the input followed by arithimetic operation in the second pipeline stage and finally the ouput is included 2 cycles ahead in the third pipeline stage.
+
+```
+$val1[31:0] = >>2$out[31:0];
+         $val2[31:0] = $rand2[3:0];
+         $op[1:0] = $rand3[1:0];
+   
+         $sum[31:0] = $val1[31:0] + $val2[31:0];
+         $diff[31:0] = $val1[31:0] - $val2[31:0];
+         $prod[31:0] = $val1[31:0] * $val2[31:0];
+         $quot[31:0] = $val1[31:0] / $val2[31:0];
+         
+         $num = $reset ? 0 : >>1$num+1;
+      @2   
+         $out[31:0] = ($reset|!$num) ? 32'b0 : (($op[1:0]==2'b00) ? $sum :
+                                       ($op[1:0]==2'b01) ? $diff :
+                                          ($op[1:0]==2'b10) ? $prod : $quot);
+         
+         `BOGUS_USE($out);
+         `BOGUS_USE($reset);
+
+
+```
+
+<img width="750" alt="Screenshot 2023-08-20 at 2 30 44 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/1f2a9c07-32e3-4215-8916-8cf76ba03c1f">
+
+
+Output:
+
+
+
  
 </details>
 

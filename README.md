@@ -636,20 +636,40 @@ Output:
 
 <img width="1269" alt="Screenshot 2023-08-20 at 4 18 01 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/dbcb0926-32c0-4773-a19d-1772cf658c99">
 
-## Lab on 2 cycle 
+## Lab on cycle Calculator with validity 
 
 Block Diagram :
 
 <img width="699" alt="Screenshot 2023-08-20 at 4 31 53 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/38d83577-ec28-4dc0-b5af-77299d6bf3d0">
 
 ```
+|calc
+      @0
+         $reset = *reset;
+      @1 
+         $valid = $reset ? 0 : >>1$valid+1;
+         $valid_or_reset = $valid || $reset;  
+      ?$valid   
+         @1          
+            $val1[31:0] = >>2$out[31:0];
+            $val2[31:0] = $rand2[3:0];
+            $op[1:0] = $rand3[1:0];
 
+            $sum[31:0] = $val1[31:0] + $val2[31:0];
+            $diff[31:0] = $val1[31:0] - $val2[31:0];
+            $prod[31:0] = $val1[31:0] * $val2[31:0];
+            $quot[31:0] = $val1[31:0] / $val2[31:0];            
+      @2   
+         $out[31:0] = $valid_or_reset ? (($op[1:0]==2'b00) ? $sum :
+                                           ($op[1:0]==2'b01) ? $diff :
+                                              ($op[1:0]==2'b10) ? $prod : $quot) : >>1$out[31:0];
+ 
 
 ```
 
 Output:
 
-
+<img width="1295" alt="Screenshot 2023-08-20 at 5 29 11 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/eaed8689-1adc-432f-80c0-8b14bb6a7498">
 
 </details>
 

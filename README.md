@@ -624,7 +624,17 @@ Validity provides :
 - Clock gating avoids toggling clock signals.
 - TL-Verilog can produce fine-grained gating (or enables).
 
+## Lab On Distance Accumulator with Pythagoran's theorem:
 
+Block diagram :
+
+<img width="800" alt="Screenshot 2023-08-20 at 4 16 23 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/0aefad73-b238-4cd7-8d01-472ff9d53a15">
+
+Output:
+
+<img width="1269" alt="Screenshot 2023-08-20 at 4 18 01 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/dbcb0926-32c0-4773-a19d-1772cf658c99">
+
+## Lab on 2 cycle calculator
 
 </details>
 

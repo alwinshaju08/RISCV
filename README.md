@@ -944,9 +944,50 @@ Following the decoding of the above, the instruction immediate decode for all th
 
 ![instr_format](https://user-images.githubusercontent.com/63381455/123752003-009fb680-d8d6-11eb-8b8e-874c4b1a4872.png)
 
-Block diagram:
+Instruction Type Decode Block diagram:
 
 ![Screenshot 2023-08-20 at 6 48 21 PM](https://github.com/alwinshaju08/RISCV/assets/69166205/d24d89b4-258b-46d8-90b5-bc997e29f24f)
+
+Output:
+
+<img width="1260" alt="Screenshot 2023-08-20 at 7 27 27 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/d016abfd-4bcd-47d7-977e-0187e5ebab7a">
+
+## LAB ON INSTRUCTION IMMEDIATE DECODE
+
+![Screenshot 2023-08-20 at 7 32 33 PM](https://github.com/alwinshaju08/RISCV/assets/69166205/d7e6dfe3-38a7-433a-81d1-89b099f3095c)
+
+```
+		      $imm[31:0] = $is_i_instr ? {{21{$instr[31]}}, $instr[30:20]} :
+                      $is_s_instr ? {{21{$instr[31]}}, $instr[30:25], $instr[11:7]} :
+                      $is_b_instr ? {{20{$instr[31]}}, $instr[7], $instr[30:25], $instr[11:8], 1'b0} :
+                      $is_u_instr ? {$instr[31:12], 12'b0} :
+                      $is_j_instr ? {{12{$instr[31]}}, $instr[19:12], $instr[20], $instr[30:21], 1'b0} :
+                                    32'b0;
+```
+
+Output:
+
+<img width="1260" alt="Screenshot 2023-08-20 at 7 31 35 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/d50f146e-9336-49cf-9824-6af818eb2d1b">
+
+## LAB ON INSTRUCTION DECODE
+
+<img width="1156" alt="Screenshot 2023-08-20 at 7 33 30 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/e0ee92e2-c2d0-4ad1-9731-ce09d68f7e3f">
+
+```
+	 $rs2[4:0] = $instr[24:20];
+         $rs1[4:0] = $instr[19:15];
+         $rd[4:0]  = $instr[11:7];
+         $opcode[6:0] = $instr[6:0];
+         $func7[6:0] = $instr[31:25];
+         $func3[2:0] = $instr[14:12];
+         
+```
+
+Output:
+
+<img width="1240" alt="Screenshot 2023-08-20 at 7 36 22 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/67468d1e-a086-4e6c-b230-31f3c3cab0c5">
+
+## LAB ON INSTRUCTION FIELD DECODE
 
 
  

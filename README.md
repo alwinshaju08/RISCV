@@ -632,9 +632,36 @@ Block diagram :
 
 <img width="800" alt="Screenshot 2023-08-20 at 4 16 23 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/0aefad73-b238-4cd7-8d01-472ff9d53a15">
 
+```
+$reset = *reset;
+
+   |calc
+      @1
+         $reset = *reset;
+            
+      ?$vaild      
+         @1
+            $aa_seq[31:0] = $aa[3:0] * $aa;
+            $bb_seq[31:0] = $bb[3:0] * $bb;;
+      
+         @2
+            $cc_seq[31:0] = $aa_seq + $bb_seq;;
+      
+         @3
+            $cc[31:0] = sqrt($cc_seq);
+            
+      @4
+         $total_distance[63:0] = 
+            $reset ? '0 :
+            $valid ? >>1$total_distance + $cc :
+                     >>1$total_distance;
+         
+```
+
 Output:
 
-<img width="1269" alt="Screenshot 2023-08-20 at 4 18 01 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/dbcb0926-32c0-4773-a19d-1772cf658c99">
+<img width="1295" alt="Screenshot 2023-08-20 at 5 36 41 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/b7700db5-cd2c-4f23-975b-edbcfed9b571">
+
 
 ## Lab on cycle Calculator with validity 
 
@@ -670,6 +697,16 @@ Block Diagram :
 Output:
 
 <img width="1295" alt="Screenshot 2023-08-20 at 5 29 11 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/eaed8689-1adc-432f-80c0-8b14bb6a7498">
+
+## Lab on Calculator with single value memory:
+
+Block diagram :
+
+
+
+Output:
+
+
 
 </details>
 

@@ -669,25 +669,28 @@ Block Diagram :
 |calc
       @0
          $reset = *reset;
-      @1 
-         $valid = $reset ? 0 : >>1$valid+1;
-         $valid_or_reset = $valid || $reset;  
-      ?$valid   
-         @1          
-            $val1[31:0] = >>2$out[31:0];
-            $val2[31:0] = $rand2[3:0];
-            $op[1:0] = $rand3[1:0];
-
-            $sum[31:0] = $val1[31:0] + $val2[31:0];
-            $diff[31:0] = $val1[31:0] - $val2[31:0];
-            $prod[31:0] = $val1[31:0] * $val2[31:0];
-            $quot[31:0] = $val1[31:0] / $val2[31:0];            
-      @2   
-         $out[31:0] = $valid_or_reset ? (($op[1:0]==2'b00) ? $sum :
-                                           ($op[1:0]==2'b01) ? $diff :
-                                              ($op[1:0]==2'b10) ? $prod : $quot) : >>1$out[31:0];
- 
-
+         
+      @1
+         $val1 [31:0] = >>2$out [31:0];
+         $val2 [31:0] = $rand2[3:0];
+         
+         $valid = $reset ? 1'b0 : >>1$valid + 1'b1 ;
+         $valid_or_reset = $valid || $reset;
+         
+      ?$vaild_or_reset
+         @1   
+            $sum [31:0] = $val1 + $val2;
+            $diff[31:0] = $val1 - $val2;
+            $prod[31:0] = $val1 * $val2;
+            $quot[31:0] = $val1 / $val2;
+            
+         @2   
+            $out [31:0] = $reset ? 32'b0 :
+                          ($op[1:0] == 2'b00) ? $sum :
+                          ($op[1:0] == 2'b01) ? $diff :
+                          ($op[1:0] == 2'b10) ? $prod :
+                                                $quot ;
+            
 ```
 
 Output:

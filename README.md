@@ -583,7 +583,26 @@ Output:
  
 </details>
 
+<details>
+	<summary>Validty </summary>
 
+Validity is another feature in TL verilog which is asserted if a particular transactions in a pipeline is valid or true. A new scope, called “when” scope is introduced for this and it is denoted as `?$valid`. This new scope has many advantages - easier design, cleaner debug, better error checking and automated clock gating.
+Validity provides :
+- Easier debug
+- Cleaner design
+- Better error checking
+- Automated Clock gating
+  
+# Clock gating
+-Why clock gating?
+• Clock signals are distributed to EVERY flip-flop.
+• Clocks toggle twice per cycle.
+• This consumes power.
+- Clock gating avoids toggling clock signals.
+- TL-Verilog can produce fine-grained gating (or enables).
+
+
+</details>
 
 ## Word of Thanks
 I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to complete this flow smoothly.

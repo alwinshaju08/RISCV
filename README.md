@@ -702,11 +702,44 @@ Output:
 
 Block diagram :
 
+<img width="733" alt="Screenshot 2023-08-20 at 5 40 20 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/53f28899-8504-4279-ad9e-0ae191fcf70b">
 
+```
+ |calc
+      @0
+         $reset = *reset;
+         
+      @1
+         $val1 [31:0] = >>2$out;
+         $val2 [31:0] = $rand2[3:0];
+         
+         $valid = $reset ? 1'b0 : >>1$valid + 1'b1 ;
+         $valid_or_reset = $valid || $reset;
+         
+      ?$vaild_or_reset
+         @1   
+            $sum [31:0] = $val1 + $val2;
+            $diff[31:0] = $val1 - $val2;
+            $prod[31:0] = $val1 * $val2;
+            $quot[31:0] = $val1 / $val2;
+            
+         @2   
+            $mem[31:0] = $reset ? 32'b0 :
+                         ($op[2:0] == 3'b101) ? $val1 : >>2$mem ;
+            
+            $out [31:0] = $reset ? 32'b0 :
+                          ($op[2:0] == 3'b000) ? $sum :
+                          ($op[2:0] == 3'b001) ? $diff :
+                          ($op[2:0] == 3'b010) ? $prod :
+                          ($op[2:0] == 3'b011) ? $quot :
+                          ($op[2:0] == 3'b100) ? >>2$mem : >>2$out ;
+            
+            
+```
 
 Output:
 
-
+<img width="1295" alt="Screenshot 2023-08-20 at 5 41 24 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/218bbb95-5f88-4e15-b471-4f933451a5ae">
 
 </details>
 

@@ -484,7 +484,9 @@ Sequential logic refers to a type of digital logic circuit or system in which th
 
 Output:
 
+<img width="1263" alt="Screenshot 2023-08-20 at 11 49 29 AM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/44fc4d1b-b32a-483c-8b74-18c6eafa5809">
 
+## Sequential Calculator To Remembers Previous Results For Next Calculations 
 
 
  

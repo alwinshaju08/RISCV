@@ -458,6 +458,8 @@ Makerchip is a free online environment for developing high-quality integrated ci
 
 ## AND Gate Example on Makerchip IDE
 
+we start with understanding the Makerchip IDE platform by trying some basic digital logic gate with And Gate being the standard one. In TL verilog we simply code the logic itself viz $out = $in1 & $in2  without requiring to declare the variables separately and $in assignment is also not required. The output of the above is as shown in figure below. We note that simultaneous highlighting of the variable is possible at the output.
+
 <img width="1274" alt="Screenshot 2023-08-19 at 10 33 45 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/2adf559c-45f2-41f4-9f19-2602b09266a4">
 
 ## Lab On Understanding Usage Of Vector
@@ -469,6 +471,8 @@ Makerchip is a free online environment for developing high-quality integrated ci
 <img width="1290" alt="Screenshot 2023-08-20 at 2 30 47 AM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/5094aaab-ad29-45fe-992d-4215f90eea83">
 
 ## Calculator on Makerchip IDE
+
+Now a lab on combinational calculator is implemented that can perform +, -, *, / on two input values. The snapshot of the code, waveform and diagram is as shown below.
 
 <img width="1401" alt="Screenshot 2023-08-20 at 3 09 19 AM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/ece71b8a-04b6-404a-ac81-384eba0d87a3">
 
@@ -488,9 +492,44 @@ Output:
 
 ## Sequential Calculator To Remembers Previous Results For Next Calculations 
 
+The sequential calculator is implemented where the output of the previous stage serves as the input of this stage. The snapshot of the sequential calculator is included below and the code is provided 
 
+<img width="733" alt="Screenshot 2023-08-20 at 12 22 10 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/32959f2b-0dac-42f4-a178-9e0322df3b09">
+
+```
+$val1[31:0] = >>1$out[31:0];
+         $val2[31:0] = $rand2[3:0];
+         $op[1:0] = $rand3[1:0];
+   
+         $sum[31:0] = $val1[31:0] + $val2[31:0];
+         $diff[31:0] = $val1[31:0] - $val2[31:0];
+         $prod[31:0] = $val1[31:0] * $val2[31:0];
+         $quot[31:0] = $val1[31:0] / $val2[31:0];
+   
+         $out[31:0] = $reset ? 32'b0 : (($op[1:0]==2'b00) ? $sum :
+                                       ($op[1:0]==2'b01) ? $diff :
+                                          ($op[1:0]==2'b10) ? $prod : $quot);
+   
+   `BOGUS_USE($out);
+   `BOGUS_USE($reset);
+
+```
+
+Output:
+
+![Screenshot 2023-08-20 at 2 12 47 PM](https://github.com/alwinshaju08/RISCV/assets/69166205/8749d857-1971-40a9-b9ac-f44168bbba09)
+
+
+</details>
+<details> <summary > Pipelining </summary>
+	
+Pipelining or timing abstract is an important feature in TL verilog as it can be implemented very easily with fewer codes as compared to system verilog which reduces bugs to a great extent. An example of the pipeling for pythogoras theorem using both TL verilog and system verilog in this repo . In TL verilog pipteling can be implemented by defining the pipeline as |calc and the different pipeline stages should be properly align and are indicated by @1, @2 and so on.
+
+Below the snapshot of the pipeline sequential calcuator is included. Here the first pipeline stage consists of the input followed by arithimetic operation in the second pipeline stage and finally the ouput is included 2 cycles ahead in the third pipeline stage.
  
 </details>
+
+
 
 ## Word of Thanks
 I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to complete this flow smoothly.

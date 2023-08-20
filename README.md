@@ -1055,6 +1055,87 @@ Output:
 
 The next task is to 'read from' and 'write into' the registers. In this operation, 2 read and write operation can be carried out simulatenously. The two `src1_value`/`src2_value` takes input from the two read register `rf_read_data1`/ `rf_read_data2` and pass it on to the ALU unit. At present, `ADDI` and `ADD` is execute whose result is obtained in register `rf_write_data`. The figure below shows the input and output registers.
 
+![register](https://user-images.githubusercontent.com/63381455/123816062-a245f880-d914-11eb-952a-214868287994.png)
+
+code:
+```
+$rf_wr_en = 1'b0;
+         $rf_wr_index[4:0] = 5'b0;
+         $rf_wr_data[31:0] = 32'b0;
+         $rf_rd_en1 = $rs1_valid;
+         $rf_rd_index1[4:0] = $rs1;
+         $rf_rd_en2 = $rs2_valid;
+         $rf_rd_index2[4:0] = $rs2;
+         
+```
+
+The snapshot of the read write operation is included below:
+
+<img width="1285" alt="Screenshot 2023-08-20 at 9 20 09 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/abd5b893-b293-43ee-ad44-e5f001334b99">
+
+## Lab on Register File Read_2
+
+![Screenshot 2023-08-20 at 9 20 54 PM](https://github.com/alwinshaju08/RISCV/assets/69166205/8ad72456-bf73-4d65-bec3-a23b4132d370)
+
+code:
+```
+	 $rf_wr_en = 1'b0;
+         $rf_wr_index[4:0] = 5'b0;
+         $rf_wr_data[31:0] = 32'b0;
+         $rf_rd_en1 = $rs1_valid;
+         $rf_rd_index1[4:0] = $rs1;
+         $rf_rd_en2 = $rs2_valid;
+         $rf_rd_index2[4:0] = $rs2;
+         
+         $src1_value[31:0] = $rf_rd_data1;
+         $src2_value[31:0] = $rf_rd_data2;
+```
+
+The makerchip implementation output:
+
+<img width="1268" alt="Screenshot 2023-08-20 at 9 24 16 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/09cfc568-ef67-429d-a54d-8eb519f73938">
+
+## Lab On ALU
+
+<img width="1268" alt="Screenshot 2023-08-20 at 9 25 26 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/3b464ec5-2d66-49db-907c-3170122b32bf">
+
+code:
+```
+$result[31:0] = $is_addi ? $src1_value + $imm :
+                         $is_add ? $src1_value + $src2_value :
+                         32'bx ;
+```
+Implementation:
+
+<img width="1268" alt="Screenshot 2023-08-20 at 9 27 09 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/a0859856-e93c-4e0d-bacf-7f9220013c0e">
+
+## Lab On Register File Write
+
+![Screenshot 2023-08-20 at 9 28 40 PM](https://github.com/alwinshaju08/RISCV/assets/69166205/81ad9def-7a13-45c2-9761-6bc789c493ab)
+
+code:
+```
+	 $rf_wr_en = $rd_valid && $rd != 5'b0;
+         $rf_wr_index[4:0] = $rd;
+         $rf_wr_data[31:0] = $result;
+```
+Implementation:
+
+<img width="1255" alt="Screenshot 2023-08-20 at 9 32 10 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/0786cccd-a1e0-41ed-9f0d-166a1baf8d5a">
+
+## ARRAYS
+
+In RISC-V, arrays are typically implemented using a combination of registers and memory. Arrays can be stored in memory, where each element is stored at a specific memory address. The processor can use load and store instructions to access these elements. For example, you might load an element from an array in memory into a register, perform operations on it, and then store the result back into memory.
+
+Alternatively, arrays can also be partially stored in registers. If an array is small enough to fit into the available registers, the elements can be loaded into registers for faster processing. This approach can improve performance for certain operations, as register access is generally faster than memory access.
+
+In both cases, whether an array is stored in memory or registers, the RISC-V architecture provides instructions to perform operations on array elements, such as loading, storing, and arithmetic operations.
+
+In summary, the register file in RISC-V architecture consists of a set of registers that are used for temporary storage and fast access to data, while arrays are collections of elements that can be stored either in memory or registers and are manipulated using load, store, and computation instructions.
+
+![Screenshot 2023-08-20 at 9 34 17 PM](https://github.com/alwinshaju08/RISCV/assets/69166205/c42ace43-59fb-4219-a6ae-5e66f1f87c9b)
+
+
 
 
 </details>

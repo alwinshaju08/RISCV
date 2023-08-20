@@ -636,7 +636,20 @@ Output:
 
 <img width="1269" alt="Screenshot 2023-08-20 at 4 18 01 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/dbcb0926-32c0-4773-a19d-1772cf658c99">
 
-## Lab on 2 cycle calculator
+## Lab on 2 cycle 
+
+Block Diagram :
+
+<img width="699" alt="Screenshot 2023-08-20 at 4 31 53 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/38d83577-ec28-4dc0-b5af-77299d6bf3d0">
+
+```
+
+
+```
+
+Output:
+
+
 
 </details>
 

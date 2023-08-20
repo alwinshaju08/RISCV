@@ -536,7 +536,30 @@ In the above implenation, we can observe the errors in the pipeline:
 
 ## Lab On Counter and Calculator in Pipeline
 
+Block diagram : 
+
 <img width="745" alt="Screenshot 2023-08-20 at 3 10 10 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/8ad0d3de-d540-47fc-ad70-9f200127d8aa">
+
+```
+   $reset = *reset;
+
+   $val1[31:0] = $rand1[3:0];
+   $val2[31:0] = $rand2[3:0];
+   
+   |calc
+      @1
+         $val1[31:0] = >>1$out;
+
+         $sum[31:0] = $val1+$val2;
+         $diff[31:0] = $val1-$val2;
+         $prod[31:0] = $val1*$val2;
+         $div[31:0] = $val1/$val2;
+
+         $out[31:0] = $reset ? 0 : ($op[1] ? ($op[0] ? $div : $prod):($op[0] ? $diff : $sum));
+         
+         $cnt[31:0] = $reset ? 0 : >>1$cnt + 1; 
+
+```
 
 Output:
 
@@ -573,6 +596,7 @@ Below the snapshot of the pipeline sequential calcuator is included. Here the fi
    `BOGUS_USE($reset);
 
 ```
+Block diagram : 
 
 <img width="750" alt="Screenshot 2023-08-20 at 2 30 44 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/1f2a9c07-32e3-4215-8916-8cf76ba03c1f">
 
@@ -594,12 +618,14 @@ Validity provides :
 - Automated Clock gating
   
 # Clock gating
+
 -Why clock gating?
 • Clock signals are distributed to EVERY flip-flop.
 • Clocks toggle twice per cycle.
 • This consumes power.
 - Clock gating avoids toggling clock signals.
 - TL-Verilog can produce fine-grained gating (or enables).
+
 
 
 </details>

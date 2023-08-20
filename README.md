@@ -739,6 +739,50 @@ Output:
 
 </details>
 
+<details>
+	<summary>Wrap-Up</summary>
+Here we gonna jst explore some examples given in makerchip ide 
+
+## Conway Game Of Life
+
+Here we can study Hierarchy Concept
+
+![Screenshot 2023-08-20 at 5 52 33 PM](https://github.com/alwinshaju08/RISCV/assets/69166205/11e8c3d3-8f62-4ef5-af41-c111f425ee4b)
+
+## Pythagoran's theorem:
+
+Block Diagram:
+
+<img width="675" alt="Screenshot 2023-08-20 at 5 55 35 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/dcbe146d-edca-4b94-9a52-ab3cfec1e04f">
+
+```
+   |calc
+      
+      // DUT
+      /coord[1:0]
+         @1
+            $sq[9:0] = $value[3:0] ** 2;
+      @2
+         $cc_sq[10:0] = /coord[0]$sq + /coord[1]$sq;
+      @3
+         $cc[4:0] = sqrt($cc_sq);
+
+
+      // Print
+      @3
+         \SV_plus
+            always_ff @(posedge clk) begin
+               \$display("sqrt((\%2d ^ 2) + (\%2d ^ 2)) = %2d", /coord[0]$value, /coord[1]$value, $cc);
+            end
+
+
+```
+Output:
+
+<img width="1289" alt="Screenshot 2023-08-20 at 5 57 23 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/41c27397-3d7e-4489-8650-d6b182f0a0a4">
+
+</details>
+
 ## Word of Thanks
 I sciencerly thank **Mr. Kunal Gosh**(Founder/**VSD**) for helping me out to complete this flow smoothly.
 

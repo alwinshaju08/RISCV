@@ -535,10 +535,14 @@ Pipelining or timing abstract is an important feature in TL verilog as it can be
 Below the snapshot of the pipeline sequential calcuator is included. Here the first pipeline stage consists of the input followed by arithimetic operation in the second pipeline stage and finally the ouput is included 2 cycles ahead in the third pipeline stage.
 
 ```
-$val1[31:0] = >>2$out[31:0];
+|calc
+      @1
+         $reset = *reset;
+         
+         
+         $val1[31:0] = >>2$out[31:0];
          $val2[31:0] = $rand2[3:0];
          $op[1:0] = $rand3[1:0];
-   
          $sum[31:0] = $val1[31:0] + $val2[31:0];
          $diff[31:0] = $val1[31:0] - $val2[31:0];
          $prod[31:0] = $val1[31:0] * $val2[31:0];
@@ -550,9 +554,11 @@ $val1[31:0] = >>2$out[31:0];
                                        ($op[1:0]==2'b01) ? $diff :
                                           ($op[1:0]==2'b10) ? $prod : $quot);
          
-         `BOGUS_USE($out);
-         `BOGUS_USE($reset);
-
+         
+         
+   
+   `BOGUS_USE($out);
+   `BOGUS_USE($reset);
 
 ```
 

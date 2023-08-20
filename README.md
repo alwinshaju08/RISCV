@@ -6,9 +6,9 @@ This github repository summarizes the progress made in the ASIC class about Risc
   
 - [Day 2-Introduction to Application Binary Interface And Basic Error Flow](#Day2--Introduction-to-Application-Binary-Interface-And-Basic-error-flow)
 
-- [Day 3 Introduction to TL Verilog and Makerchip](#Day-3-Introduction-to-TL-Verilog-and-Makerchip.)
+- [Day 3-Introduction to TL Verilog and Makerchip](#Day-3--Introduction-to-TL-Verilog-and-Makerchip.)
 
-- []()
+- [Day 4-Basic RISC-V CPU micro-architecture](#Day-4--Basic-RISC-V-CPU-micro-architecture)
 
 - [Word of Thanks](#Word-of-Thanks)
 
@@ -781,6 +781,175 @@ Output:
 
 <img width="1289" alt="Screenshot 2023-08-20 at 5 57 23 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/41c27397-3d7e-4489-8650-d6b182f0a0a4">
 
+</details>
+
+# Day 4-Basic RISC-V CPU micro-architecture
+
+<details>
+<summary>Basic RISC-V CPU microarchitecture </summary>
+	
+The block diagram of a basic RISC-V microarchitecture is as shown in figure below. Now, using the Makerchip platform the implementation of the RISC-V microarchitecture or core is done. For starting the implementation a starter code present [here](https://github.com/stevehoover/RISC-V_MYTH_Workshop) is used. The starter code consist of -
+
+- A simple RISC-V assembler.
+- An instruction memory containing the sum 1..9 test program.
+- Commented code for register file and memory.
+- Visualization.
+
+![RISCV-BD](https://user-images.githubusercontent.com/63381455/123661532-3e5afb80-d852-11eb-8ab9-55629049586b.png)
+
+
+</details>
+
+<details>
+	<summary> Fetch and Decode </summary>
+	
+Designing of processor is based on three core steps fetch, decode and execute :
+
+Here we gonna design RiscV Cpu Core for which block diagram is given below :
+
+![Screenshot 2023-08-20 at 6 20 34 PM](https://github.com/alwinshaju08/RISCV/assets/69166205/eafc0b5c-d4f8-4c56-a5b6-986421bbb3a0)
+
+## PC Logic 
+
+The Program Counter, often referred to as the "PC," is a fundamental component of a processor that keeps track of the address of the next instruction to be executed. In the RISC-V architecture, the PC is typically called "pc" or "pc_reg." Overall, the PC logic is crucial for the control flow of a program. It determines which instruction will be executed next and how the program progresses. RISC-V, as a RISC (Reduced Instruction Set Computer) architecture, emphasizes simplicity and regularity in its design, which extends to its PC handling mechanisms.
+
+<img width="1101" alt="Screenshot 2023-08-20 at 6 24 39 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/0bdcc243-3ae6-4d80-8e50-5cdc03401181">
+
+```
+|cpu
+      @0
+         $reset = *reset;
+         
+         $pc[31:0] = >>1$reset ? 32'b0 : >>1$pc + 32'd4;
+         
+         
+         
+      // Note: Because of the magic we are using for visualisation, if visualisation is enabled below,
+      //       be sure to avoid having unassigned signals (which you might be using for random inputs)
+      //       other than those specifically expected in the labs. You'll get strange errors for these.
+
+   
+   // Assert these to end simulation (before Makerchip cycle limit).
+   *passed = *cyc_cnt > 40;
+   *failed = 1'b0;
+```
+Output:
+
+<img width="1269" alt="Screenshot 2023-08-20 at 6 30 20 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/d36d6933-267b-43e6-a5cb-d175c0932b39">
+
+
+## Fetch
+
+During the fetch stage, processors fetches the instruction from the memory to the address pointed by the program counter. The program counters holds the address of the next stage, in our case it is after 4 cycle and the instruction memory holds the set of instruction to be executed. The snapshot of the fetch stage is shown below.
+
+Fetch Block diagram part 1:
+
+<img width="1158" alt="Screenshot 2023-08-20 at 6 32 23 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/a3d0eb41-2f8c-4592-a73f-0a877ba48728">
+
+```
+|cpu
+      @0
+         $reset = *reset;
+         
+         $pc[31:0] = >>1$reset ? 32'b0 : >>1$pc + 32'd4;
+         
+         
+         
+      // Note: Because of the magic we are using for visualisation, if visualisation is enabled below,
+      //       be sure to avoid having unassigned signals (which you might be using for random inputs)
+      //       other than those specifically expected in the labs. You'll get strange errors for these.
+
+   
+   // Assert these to end simulation (before Makerchip cycle limit).
+   *passed = *cyc_cnt > 40;
+   *failed = 1'b0;
+   
+   // Macro instantiations for:
+   //  o instruction memory
+   //  o register file
+   //  o data memory
+   //  o CPU visualization
+   |cpu
+      m4+imem(@1)    // Args: (read stage)
+      //m4+rf(@1, @1)  // Args: (read stage, write stage) - if equal, no register bypass is required
+      //m4+dmem(@4)    // Args: (read/write stage)
+   
+   m4+cpu_viz(@4)    // For visualisation, argument should be at least equal to the last stage of CPU logic
+                      
+```
+
+Output:
+
+<img width="1253" alt="Screenshot 2023-08-20 at 6 38 45 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/dd7351bf-e9af-45f4-a907-ccc5c69a12b1">
+
+Correct fetch Block Diagram :
+
+![Screenshot 2023-08-20 at 6 36 42 PM](https://github.com/alwinshaju08/RISCV/assets/69166205/8d8dcddd-235d-4217-8c08-14448a8403a1)
+
+```
+|cpu
+      @0
+         $reset = *reset;
+         
+         $pc[31:0] = >>1$reset ? 32'b0 : >>1$pc + 32'd4;
+         
+      @1 
+         $imem_rd_addr[M4_IMEM_INDEX_CNT-1:0] = $pc[M4_IMEM_INDEX_CNT+1:2];
+         $imem_rd_en = !$reset;
+         $instr[31:0] = $imem_rd_data[31:0];
+         
+      ?$imem_rd_en
+         @1
+            $imem_rd_data[31:0] = /imem[$imem_rd_addr]$instr;   
+         
+      // Note: Because of the magic we are using for visualisation, if visualisation is enabled below,
+      //       be sure to avoid having unassigned signals (which you might be using for random inputs)
+      //       other than those specifically expected in the labs. You'll get strange errors for these.
+
+   
+   // Assert these to end simulation (before Makerchip cycle limit).
+   *passed = *cyc_cnt > 40;
+   *failed = 1'b0;
+   
+   // Macro instantiations for:
+   //  o instruction memory
+   //  o register file
+   //  o data memory
+   //  o CPU visualization
+   |cpu
+      m4+imem(@1)    // Args: (read stage)
+      //m4+rf(@1, @1)  // Args: (read stage, write stage) - if equal, no register bypass is required
+      //m4+dmem(@4)    // Args: (read/write stage)
+   
+   m4+cpu_viz(@4) 
+```
+Output:
+
+<img width="1253" alt="Screenshot 2023-08-20 at 7 07 22 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/035557a7-3a4e-49c4-b84d-93bbf1ee6647">
+
+## Decode
+
+For decoding a particular instruction, it is necessary that the isntruction type and format is known to the processor. The decoding is a crucial part and has to be done properly according to the given format to avoid error. There are 6 instructions type in RISC-V :
+
+1. Register (R) type 
+2. Immediate (I) type
+3. Store (S) type
+4. Branch (B) type
+5. Upper immediate  (U) type
+6. Jump (J) type
+
+<img width="1253" alt="Screenshot 2023-08-20 at 7 09 19 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/af7645fb-fa15-47bc-9197-9278ab430cae">
+
+Following the decoding of the above, the instruction immediate decode for all the above, except the register type is added. The 6 others instruction format/fields including the opcode, 2 source register, destination register, funct3 and funct7 decode is included. Next the instruction field decode of the different instruction type is inserted to ensure that only valid registers are used. Finally the base instruction set decode for the various fields is incorporated. 
+
+![instr_format](https://user-images.githubusercontent.com/63381455/123752003-009fb680-d8d6-11eb-8b8e-874c4b1a4872.png)
+
+Block diagram:
+
+![Screenshot 2023-08-20 at 6 48 21 PM](https://github.com/alwinshaju08/RISCV/assets/69166205/d24d89b4-258b-46d8-90b5-bc997e29f24f)
+
+
+ 
 </details>
 
 ## Word of Thanks

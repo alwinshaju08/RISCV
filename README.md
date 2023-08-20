@@ -561,8 +561,7 @@ $val1[31:0] = >>2$out[31:0];
 
 Output:
 
-
-
+<img width="1319" alt="Screenshot 2023-08-20 at 2 49 17 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/8960b92f-8bd8-474f-a930-aa75572d6d82">
  
 </details>
 

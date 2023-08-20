@@ -527,6 +527,11 @@ Pipelining or timing abstract is an important feature in TL verilog as it can be
 
 ## Lab To Compute Total Distance 
 
+![Screenshot 2023-08-20 at 3 05 33 PM](https://github.com/alwinshaju08/RISCV/assets/69166205/17c91005-4a6a-4425-923f-40228d54ae90)
+
+
+In the above implenation, we can observe the errors in the pipeline:
+
 <img width="1332" alt="Screenshot 2023-08-20 at 2 09 18 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/0b4f0017-c51d-4c5f-84d2-e625987694ae">
 
 Output:

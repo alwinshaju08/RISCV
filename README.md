@@ -542,18 +542,16 @@ Block diagram :
 
 ```
    $reset = *reset;
-
-   $val1[31:0] = $rand1[3:0];
-   $val2[31:0] = $rand2[3:0];
    
    |calc
       @1
          $val1[31:0] = >>1$out;
+	 $val2[31:0] = $rand2[3:0];
 
          $sum[31:0] = $val1+$val2;
          $diff[31:0] = $val1-$val2;
          $prod[31:0] = $val1*$val2;
-         $div[31:0] = $val1/$val2;
+         $quot[31:0] = $val1/$val2;
 
          $out[31:0] = $reset ? 0 : ($op[1] ? ($op[0] ? $div : $prod):($op[0] ? $diff : $sum));
          

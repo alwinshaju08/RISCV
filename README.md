@@ -371,10 +371,6 @@ So, it is system call interface used by the application program to access the re
 
 Here in each Instructions set we can see register are of 5 bits so total number of register = 2^5 = 32 registers
 
-# RISC-V Block Diagram
-
-![RISC-V](https://github.com/kuby1412/RISC-V-MYTH-Workshop/blob/master/Documentation/Block%20Diagram.PNG)
-
 ![RISC-V](https://github.com/kuby1412/RISC-V-MYTH-Workshop/blob/master/Documentation/Block%20Diagram%20v2.PNG)
 
 

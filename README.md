@@ -474,7 +474,17 @@ Makerchip is a free online environment for developing high-quality integrated ci
 
 </details>
 <details >
-<summary >Lab for Combinational logic </summary>
+<summary >Lab for Sequential  logic </summary>
+
+Sequential logic refers to a type of digital logic circuit or system in which the output depends not only on the current inputs but also on the previous states of the circuit. Unlike combinational logic, which only considers the current inputs to generate outputs, sequential logic incorporates memory elements to store information and generate outputs based on both current inputs and past history.
+
+## Lab On Free Running Counter
+
+<img width="475" alt="Screenshot 2023-08-20 at 3 18 34 AM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/8ecfee27-aa83-49a3-808d-21a4882d2741">
+
+Output:
+
+
 
 
  

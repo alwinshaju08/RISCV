@@ -1429,6 +1429,7 @@ Below is snapshot from Makerchip IDE after including load/store instructions:
 Finally the jump instruction is added and the decode instuction and the ALU for the entire RV32I base integer set is completed.
 
 code:
+
 ```
 \m4_TLV_version 1d: tl-x.org
 \SV
@@ -1678,7 +1679,7 @@ code:
          $dmem_wr_data[31:0] =  $src2_value[31:0];
          $dmem_rd_en         =  $valid_load;
          
-      @5
+      
          //Write back data read from load instruction to register
          $ld_data[31:0]      =  $dmem_rd_data[31:0];
          

@@ -1279,6 +1279,19 @@ Some Branching Instructions are :
 - BLTU: <
 - BGEU: >=
 
+code:
+```
+$taken_branch = $is_beq ? ($src1_value == $src2_value):
+                         $is_bne ? ($src1_value != $src2_value):
+                         $is_blt ? (($src1_value < $src2_value) ^ ($src1_value[31] != $src2_value[31])):
+                         $is_bge ? (($src1_value >= $src2_value) ^ ($src1_value[31] != $src2_value[31])):
+                         $is_bltu ? ($src1_value < $src2_value):
+                         $is_bgeu ? ($src1_value >= $src2_value):
+                                    1'b0;
+         `BOGUS_USE($taken_branch)
+         
+```
+
 ![Screenshot 2023-08-21 at 11 22 46 AM](https://github.com/alwinshaju08/RISCV/assets/69166205/314825b2-59ce-4544-aab6-55f1cde5d193)
 
 ## Lab For Complementing Branch Instructions
@@ -1290,7 +1303,8 @@ Block Diagram:
 code:
 
 ```
-	   $taken_branch = $is_beq ? ($src1_value == $src2_value):
+	   //BRANCH INSTRUCTIONS 1
+         $taken_branch = $is_beq ? ($src1_value == $src2_value):
                          $is_bne ? ($src1_value != $src2_value):
                          $is_blt ? (($src1_value < $src2_value) ^ ($src1_value[31] != $src2_value[31])):
                          $is_bge ? (($src1_value >= $src2_value) ^ ($src1_value[31] != $src2_value[31])):
@@ -1299,7 +1313,8 @@ code:
                                     1'b0;
          `BOGUS_USE($taken_branch)
          
-         `BOGUS_USE($taken_branch)
+         //BRANCH INSTRUCTIONS 2
+         $br_target_pc[31:0] = $pc +$imm;
 ```
 
 Output:

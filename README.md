@@ -1328,8 +1328,7 @@ Now pipelining of the CPU core is done, which allows easy retiming and reduces f
 
 Block Diagram:
 
-<img width="1284" alt="Screenshot 2023-08-21 at 3 23 03 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/5a267b30-8b88-458c-89be-b8961f7b13b9">
-
+<img width="648" alt="Screenshot 2023-08-21 at 3 23 52 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/44bc20db-bfe8-47ec-b216-ccef5973ec94">
 
 code:
 ```
@@ -1339,11 +1338,7 @@ code:
 ```
 Output:
 
-<img width="648" alt="Screenshot 2023-08-21 at 3 23 52 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/44bc20db-bfe8-47ec-b216-ccef5973ec94">
-
-
-
-
+<img width="1284" alt="Screenshot 2023-08-21 at 3 23 03 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/5a267b30-8b88-458c-89be-b8961f7b13b9">
  
 </details>
 

@@ -1715,10 +1715,9 @@ code:
 ```
 Below is the image:
 
-<img width="1267" alt="Screenshot 2023-08-21 at 10 14 09 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/0ed1a147-2005-4fe7-b750-e85a324cd83d">
+<img width="1273" alt="Screenshot 2023-08-21 at 10 38 24 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/1114608e-aba1-4c87-bd02-49f56d8af886">
 
-
- <img width="898" alt="Screenshot 2023-08-21 at 10 14 47 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/ee5e2203-22c0-473a-9f9a-9276fc8343e6">
+<img width="898" alt="Screenshot 2023-08-21 at 10 14 47 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/ee5e2203-22c0-473a-9f9a-9276fc8343e6">
 
 </details>
 

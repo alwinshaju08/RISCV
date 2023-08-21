@@ -1277,12 +1277,41 @@ Some Branching Instructions are :
 - BLTU: <
 - BGEU: >=
 
-<img width="1127" alt="Screenshot 2023-08-20 at 9 42 32 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/35cfe3d3-b0aa-4418-8c19-42dc39ae27c0">
+![Screenshot 2023-08-21 at 11 22 46 AM](https://github.com/alwinshaju08/RISCV/assets/69166205/314825b2-59ce-4544-aab6-55f1cde5d193)
 
+## Lab For Complementing Branch Instructions
 
+Block Diagram:
 
+<img width="1120" alt="Screenshot 2023-08-21 at 12 02 42 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/0e86494f-052b-431a-bdba-d96e7b0448cf">
 
+code:
 
+```
+	   $taken_branch = $is_beq ? ($src1_value == $src2_value):
+                         $is_bne ? ($src1_value != $src2_value):
+                         $is_blt ? (($src1_value < $src2_value) ^ ($src1_value[31] != $src2_value[31])):
+                         $is_bge ? (($src1_value >= $src2_value) ^ ($src1_value[31] != $src2_value[31])):
+                         $is_bltu ? ($src1_value < $src2_value):
+                         $is_bgeu ? ($src1_value >= $src2_value):
+                                    1'b0;
+         `BOGUS_USE($taken_branch)
+         
+         `BOGUS_USE($taken_branch)
+```
+
+Output:
+
+<img width="1284" alt="Screenshot 2023-08-21 at 12 05 44 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/3f405b45-466e-4a47-8031-aaf491885677">
+
+## Lab For Testbench
+
+code:
+```
+*passed = |cpu/xreg[10]>>5$value == (1+2+3+4+5+6+7+8+9) ;
+
+```
+<img width="1284" alt="Screenshot 2023-08-21 at 12 10 50 PM" src="https://github.com/alwinshaju08/RISCV/assets/69166205/c2a6784d-fc3a-44a0-8d88-eb405e82438d">
 
 </details>
 

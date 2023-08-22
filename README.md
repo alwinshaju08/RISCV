@@ -1434,7 +1434,6 @@ code:
 \m4_TLV_version 1d: tl-x.org
 \SV
    // Template code can be found in: https://github.com/stevehoover/RISC-V_MYTH_Workshop
-   // URL for this code : http://makerchip.com/sandbox/02kfkh98q/0oYhr39#
    
    m4_include_lib(['https://raw.githubusercontent.com/BalaDhinesh/RISC-V_MYTH_Workshop/master/tlv_lib/risc-v_shell_lib.tlv'])
 
@@ -1446,7 +1445,6 @@ code:
    // | Sum 1 to 9 Program |
    // \====================/
    //
-   // Program for MYTH Workshop to test RV32I
    // Add 1,2,3,...,9 (in that order).
    //
    // Regs:

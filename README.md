@@ -1347,9 +1347,10 @@ Block Diagram:
 
 code:
 ```
-	 $start = >>1$reset && !$reset;
-         $valid = $reset ? 1'b0 : ($start || >>3$valid);
-         $valid_or_reset = $valid || $reset;
+	
+$valid = $reset ? 1'b0 : ($start) ? 1'b1 : (>>3$valid) ;
+         $start_int = $reset ? 1'b0 : 1'b1;
+         $start = $reset ? 1'b0 : ($start_int && !>>1$start_int);
 ```
 Output:
 
@@ -1388,8 +1389,8 @@ The load and store option is also included for which a 1 read/write data memory 
 
 ```
 //Register file bypass logic - data forwarding from ALU to resolve RAW dependence
-         $src1_value[31:0] = $rs1_bypass ? >>1$result[31:0] : $rf_rd_data1[31:0];
-         $src2_value[31:0] = $rs2_bypass ? >>1$result[31:0] : $rf_rd_data2[31:0];
+         $src1_value[31:0] = ((>>1$rf_wr_en) && (>>1$rd == $rs1 )) ? (>>1$result): $rf_rd_data1; 
+	 $src2_value[31:0] = ((>>1$rf_wr_en) && (>>1$rd == $rs2 )) ? (>>1$result) : $rf_rd_data2;
 ```
 **Code For Branches To Correct The Branch Target Path**
 
@@ -1407,6 +1408,9 @@ The load and store option is also included for which a 1 read/write data memory 
          $jump_valid = $valid && $is_jump;
          $jal_valid  = $valid && $is_jal;
          $jalr_valid = $valid && $is_jalr;
+
+	 $pc[31:0] = (>>1$reset) ? 32'b0 : (>>3$valid_taken_br) ? (>>3$br_tgt_pc) :  (>>3$int_pc)  ;
+         //$valid = $reset ? 1'b0 : ($start) ? 1'b1 : (>>3$valid) ; no need for this
 ```
 
 Added test case to check fucntionality of load/store. Stored the summation of 1 to 9 on address 4 of Data Memory and loaded that value from Data Memory to r17.

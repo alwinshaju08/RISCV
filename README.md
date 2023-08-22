@@ -793,7 +793,7 @@ Output:
 <details>
 <summary>Basic RISC-V CPU microarchitecture </summary>
 	
-The block diagram of a basic RISC-V microarchitecture is as shown in figure below. Now, using the Makerchip platform the implementation of the RISC-V microarchitecture or core is done. For starting the implementation a starter code present [here](https://github.com/stevehoover/RISC-V_MYTH_Workshop) is used. The starter code consist of -
+The block diagram of a basic RISC-V microarchitecture is as shown in figure below. Now, using the Makerchip platform the implementation of the RISC-V microarchitecture or core is done. For starting the implementation a starter code present in reference  is used. The starter code consist of -
 
 - A simple RISC-V assembler.
 - An instruction memory containing the sum 1..9 test program.
